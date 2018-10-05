@@ -6,7 +6,7 @@ class SuperEurobot extends Client {
         super();
         // Load the configuration file
         this.config = new Config();
-        this.config.loggingLevel > 0 ? console.log("Configuration file loaded.") : null;
+        this.config.logging_level > 0 ? console.log("Configuration file loaded.") : null;
     }
 }
 
