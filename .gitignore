@@ -1,3 +1,6 @@
+#swap files for vim
+*.swp
+
 #config
 config/token.txt
 
