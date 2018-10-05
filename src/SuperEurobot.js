@@ -2,11 +2,27 @@ const { Client } = require("discord.js");
 const Config = require("./Config");
 
 class SuperEurobot extends Client {
+    
     constructor() {
         super();
-        // Load the configuration file
+        this.loadConfig();
+        this.loadCommands();
+        this.setupListeners();
+    }
+    
+    loadConfig() {
         this.config = new Config();
         this.config.logging_level > 0 ? console.log("Configuration file loaded.") : null;
+    }
+
+    loadCommands() {
+        // TODO        
+    }
+
+    setupListeners() {
+        this.on("message", () => {
+            console.log("Received message.");
+        });
     }
 }
 
