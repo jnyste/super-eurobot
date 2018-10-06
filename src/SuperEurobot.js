@@ -39,11 +39,10 @@ class SuperEurobot extends Client {
     }
 
     handleMessage(msg) {
-        // TODO
         let commandArgs = msg.content.substr(this.config.command_prefix.length).split(" ");
         this.commands.forEach(function(command) {
             if (commandArgs[0] == command.identifier)
-                command.exec(this, commandArgs);
+                command.exec(this, msg, commandArgs);
         });
     }
 

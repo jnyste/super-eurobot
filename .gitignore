@@ -1,6 +1,9 @@
 #swap files for vim
 *.swp
 
+#testing
+src/commands/TestCommand.js
+
 #config
 config/token.txt
 config/owner.txt
