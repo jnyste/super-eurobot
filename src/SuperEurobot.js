@@ -1,5 +1,6 @@
 const { Client } = require("discord.js");
 const Config = require("./Config");
+const fs = require('fs');
 
 class SuperEurobot extends Client {
     
@@ -7,7 +8,7 @@ class SuperEurobot extends Client {
         super();
         this.commands = [];
         this.loadConfig();
-        this.loadCommand("./commands/HelpCommand.js");
+        this.loadAllCommands();
         this.setupListeners();
     }
     
@@ -16,15 +17,20 @@ class SuperEurobot extends Client {
         this.debugMessages() ? console.log("Configuration file loaded.") : null;
     }
 
+    loadAllCommands() {
+        fs.readdirSync(this.config.command_directory).forEach(path => {
+            this.loadCommand(path);
+        });
+    }
+
     debugMessages() {
         return this.config.logging_level;
     }
 
     loadCommand(path) {
-        let req = require(path);
-        let command = new req();
-        this.commands.push(command);
-        this.debugMessages() ? console.log("Loaded command: " + command.name) : null;
+        let newCommand = new require(this.config.command_directory + path);
+        this.commands.push(newCommand);
+        this.debugMessages() ? console.log("Loaded command: " + newCommand.name) : null;
     }
 
     setupListeners() {
