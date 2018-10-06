@@ -1,2 +1,2 @@
 # super-eurobot-2
-Modular Discord bot framework
+Modular Discord bot
