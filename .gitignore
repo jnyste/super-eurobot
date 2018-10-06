@@ -3,6 +3,7 @@
 
 #config
 config/token.txt
+config/owner.txt
 
 # Logs
 logs

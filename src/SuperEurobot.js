@@ -1,6 +1,6 @@
+const fs = require('fs');
 const { Client } = require("discord.js");
 const Config = require("./Config");
-const fs = require('fs');
 
 class SuperEurobot extends Client {
     
@@ -21,12 +21,9 @@ class SuperEurobot extends Client {
         fs.readdirSync(this.config.command_directory).forEach(path => {
             this.loadCommand(path);
         });
+        this.debugMessages() ? console.log("All commands loaded.") : null;
     }
-
-    debugMessages() {
-        return this.config.logging_level;
-    }
-
+    
     loadCommand(path) {
         let newCommand = new (require(this.config.command_directory + path));
         this.commands.push(newCommand);
@@ -49,6 +46,11 @@ class SuperEurobot extends Client {
                 command.exec(this, commandArgs);
         });
     }
+
+    debugMessages() {
+        return this.config.logging_level;
+    }
+
 }
 
 module.exports = SuperEurobot;
