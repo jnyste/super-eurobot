@@ -35,9 +35,14 @@ class SuperEurobot extends Client {
 
     setupListeners() {
         this.on("message", (msg) => {
-            console.log("Received message.");
-            this.commands[this.commands.length - 1].exec(msg);
+            if (msg.startsWith(this.config.command_prefix)) {
+                this.handleMessage(msg);
+            }
         });
+    }
+
+    handleMessage(msg) {
+        // TODO
     }
 }
 
