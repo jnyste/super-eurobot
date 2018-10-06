@@ -4,6 +4,7 @@ class HelpCommand extends Command {
     constructor(client) {
         super(client);
         this.name = "Help Command";
+        this.identifier = "help";
     }
 
     async exec(msg) {
